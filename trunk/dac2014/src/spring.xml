@@ -10,9 +10,53 @@
     http://www.springframework.org/schema/aop 
     http://www.springframework.org/schema/aop/spring-aop.xsd ">
 	
-	<bean id='ref1' class='com.dac.Student' >
+	<bean id='ref1' class='com.dac.Student' depends-on="ref2"  init-method="willInit" destroy-method="willDestory" lazy-init="default">
 	    <property name="message" value="Hello Spring...!!"  ></property>	
 	</bean>
+	
+	<bean id="ref2" class="com.dac.Student">
+	</bean>
      
+	<!-- CONSTRUCT REFERENCE -->
+	<bean id="ref3" class="com.dac.Student">
+	    <constructor-arg name="sname" value="I am Spring!!"></constructor-arg>
+	    <constructor-arg name="id" value="1234"></constructor-arg>
+	</bean>
+	
+	
+	<!-- COLLECTIONS REFERENECE -->
+	<bean id='ref4' class='com.dac.Student'>
+		<property name="message" value="Hello Spring...!!"  ></property>
+		<property name="list" >
+		    <list>
+		        <value>JAVA</value>
+		        <value>JAVA</value>
+		    </list>
+		</property>
+		
+		<property name="set">
+		    <set>
+		        <value>SPRING</value>
+		        <value>SPRING</value>
+		    </set>
+		</property>
+		
+		<property name="map">
+		    <map>
+		        <entry key="1" value="JAVA"></entry>
+		        <entry key="2" value="SPRING"></entry>
+		    </map>
+		</property>
+	</bean>
+	
+	
+	<!-- OBJECT REFERECE -->
+	<bean id='address1' class='com.dac.Address'>
+	    <property name="city" value="delhi"></property>
+	</bean>
+	<bean id='ref5' class="com.dac.Student">
+	    <property name="address" ref="address1"></property>	
+	</bean>
+	
 	
 </beans>
