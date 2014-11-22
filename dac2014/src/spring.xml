@@ -51,7 +51,7 @@
 	
 	
 	<!-- OBJECT REFERECE -->
-	<bean id='address1' class='com.dac.Address'>
+	<bean id='address1' class='com.dac.Address' autowire-candidate="false">
 	    <property name="city" value="delhi"></property>
 	</bean>
 	<bean id='ref5' class="com.dac.Student">
@@ -59,4 +59,37 @@
 	</bean>
 	
 	
+	<!-- AUTOWIRING BY NAME -->
+	<bean id='address' class='com.dac.Address'>
+		<property name="city" value="Calcutta"></property>	    
+	</bean>
+	<bean id='ref6' class='com.dac.Student' autowire="byName">
+	    <property name="sname" value="My Name is Spring..."></property>
+	</bean>
+	
+	
+	<!-- AUTOWIRING BY TYPE -->
+	<bean id='ad1' class='com.dac.Address' autowire-candidate="false">
+		<property name="city" value="MUMBAI"></property>	    
+	</bean>
+	<bean id='ref7' class='com.dac.Student' autowire="byType">
+	    <property name="sname" value="My Name is Spring..."></property>
+	</bean>
+	
+	
+	<!-- AUTOMATICALLY IDENTIFY BEAN -->
+	<context:annotation-config />
+		<context:component-scan base-package="com.dac">
+	</context:component-scan>
+	
 </beans>
+
+
+
+
+
+
+
+
+
+
