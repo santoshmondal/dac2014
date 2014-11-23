@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd 
+    http://www.springframework.org/schema/aop 
+    http://www.springframework.org/schema/aop/spring-aop.xsd ">
+	
+	
+    <bean id='rohit' class="com.dac.coupling.DbDaoRohit">
+    </bean>
+    
+    <bean id='abhi' class="com.dac.coupling.DbDaoAbhishek">
+    </bean>
+    
+    <bean id='manager' class="com.dac.coupling.Manager">
+        <property name="dbdao" ref="abhi"></property>
+    </bean>
+    
+    
+    
+    
+    <!-- CRAETE THE OBJECT OF ASPECT CLASS -->
+    <bean id='aspectRef' class="com.dac.coupling.CommonAspect"></bean>
+    
+    <aop:config>
+        <aop:aspect id="aspectOject" ref="aspectRef">
+            <!-- EVENT GENERATOR -->
+            <aop:pointcut id="pointcutID" expression="execution(* com.dac.coupling.Manager.listUser(..))" />
+            
+            <!-- EVENT LISTENER  method name will be your ADVICE-->
+            <aop:before method="logRequest" pointcut-ref="pointcutID" />
+            <aop:after method="afterMethod" pointcut-ref="pointcutID"/>
+        </aop:aspect>
+    </aop:config>
+    
+    	
+</beans>
+
+
+
+
+
+
+
+
+
+
