@@ -4,15 +4,15 @@
 	<groupId>dac2014</groupId>
 	<artifactId>dac2014</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<properties>
 		<org.springframework.version>4.1.1.RELEASE</org.springframework.version>
 	</properties>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
-		
+
 	</build>
-	
+
 	<dependencies>
 		<!-- Core utilities used by other modules. Define this if you use Spring 
 			Utility APIs (org.springframework.core.*/org.springframework.util.*) -->
@@ -166,7 +166,16 @@
 			<artifactId>javassist</artifactId>
 			<version>3.12.0.GA</version>
 		</dependency>
-		
+
+
+		<!-- LDAP -->
+		<dependency>
+			<groupId>com.novell.ldap</groupId>
+			<artifactId>jldap</artifactId>
+			<version>4.3</version>
+		</dependency>
+
+
 	</dependencies>
-	
+
 </project>
