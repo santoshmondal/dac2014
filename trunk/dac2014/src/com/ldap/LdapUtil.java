@@ -31,7 +31,7 @@ public class LdapUtil {
 	
 	public static void main(String[] args) throws Exception {
 		connectionTest();
-		ldapDemo();
+		ldapSearchDemo();
 	}   
 	
 	public static void connectionTest() {
@@ -51,7 +51,7 @@ public class LdapUtil {
 		}
 	}
 	
-	public static void ldapDemo() throws Exception{
+	public static void ldapSearchDemo() throws Exception{
         InitialDirContext ctx =  new InitialDirContext(env);
         
         String searchFilter = "(&(objectClass=person)(cn=sant*))";
