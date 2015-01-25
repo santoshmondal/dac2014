@@ -1,3 +1,7 @@
+/**
+ * http://docs.oracle.com/javase/jndi/tutorial/ldap/TOC.html
+ */
+
 package com.ldap;
 
 import java.util.Hashtable;
@@ -54,7 +58,7 @@ public class LdapUtil {
 	public static void ldapSearchDemo() throws Exception{
         InitialDirContext ctx =  new InitialDirContext(env);
         
-        String searchFilter = "(&(objectClass=person)(cn=sant*))";
+        String searchFilter = "(&(objectClass=person)(cn=*))";
 
         SearchControls searchControls = new SearchControls();
         searchControls.setSearchScope(SearchControls.SUBTREE_SCOPE);
